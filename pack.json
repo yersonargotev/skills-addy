@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "id": "addy",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Addy agent skills",
   "selectable": true,
   "surfaces": [
@@ -1651,7 +1651,7 @@
       "kind": "notice",
       "license": "MIT",
       "requires": [],
-      "source": "notices/mit",
+      "source": "notices/addy-mit",
       "surface_exclusions": [],
       "conflicts": [],
       "notices": [
