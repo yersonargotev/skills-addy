@@ -1945,14 +1945,6 @@
                   },
                   {
                     "kind": "asset",
-                    "id": "performance-checklist"
-                  },
-                  {
-                    "kind": "asset",
-                    "id": "security-checklist"
-                  },
-                  {
-                    "kind": "asset",
                     "id": "testing-patterns"
                   }
                 ]
@@ -1992,7 +1984,7 @@
       "origin": {
         "id": "addy-agent-skills",
         "path": "skills/code-review-and-quality",
-        "relationship": "exact-copy"
+        "relationship": "adapted"
       }
     },
     {
@@ -2439,10 +2431,6 @@
                   },
                   {
                     "kind": "asset",
-                    "id": "orchestration-patterns"
-                  },
-                  {
-                    "kind": "asset",
                     "id": "performance-checklist"
                   },
                   {
@@ -2490,7 +2478,7 @@
       "origin": {
         "id": "addy-agent-skills",
         "path": "skills/doubt-driven-development",
-        "relationship": "exact-copy"
+        "relationship": "adapted"
       }
     },
     {
@@ -2508,10 +2496,6 @@
               "claude_composite_skill": {
                 "dependencies": [],
                 "references": [
-                  {
-                    "kind": "asset",
-                    "id": "accessibility-checklist"
-                  },
                   {
                     "kind": "asset",
                     "id": "definition-of-done"
@@ -2573,7 +2557,7 @@
       "origin": {
         "id": "addy-agent-skills",
         "path": "skills/frontend-ui-engineering",
-        "relationship": "exact-copy"
+        "relationship": "adapted"
       }
     },
     {
@@ -2763,10 +2747,6 @@
                   },
                   {
                     "kind": "asset",
-                    "id": "definition-of-done"
-                  },
-                  {
-                    "kind": "asset",
                     "id": "observability-checklist"
                   },
                   {
@@ -2822,7 +2802,7 @@
       "origin": {
         "id": "addy-agent-skills",
         "path": "skills/incremental-implementation",
-        "relationship": "exact-copy"
+        "relationship": "adapted"
       }
     },
     {
@@ -2933,10 +2913,6 @@
                   },
                   {
                     "kind": "asset",
-                    "id": "observability-checklist"
-                  },
-                  {
-                    "kind": "asset",
                     "id": "orchestration-patterns"
                   },
                   {
@@ -2988,7 +2964,7 @@
       "origin": {
         "id": "addy-agent-skills",
         "path": "skills/observability-and-instrumentation",
-        "relationship": "exact-copy"
+        "relationship": "adapted"
       }
     },
     {
@@ -3021,10 +2997,6 @@
                   {
                     "kind": "asset",
                     "id": "orchestration-patterns"
-                  },
-                  {
-                    "kind": "asset",
-                    "id": "performance-checklist"
                   },
                   {
                     "kind": "asset",
@@ -3071,7 +3043,7 @@
       "origin": {
         "id": "addy-agent-skills",
         "path": "skills/performance-optimization",
-        "relationship": "exact-copy"
+        "relationship": "adapted"
       }
     },
     {
@@ -3092,10 +3064,6 @@
                   {
                     "kind": "asset",
                     "id": "accessibility-checklist"
-                  },
-                  {
-                    "kind": "asset",
-                    "id": "definition-of-done"
                   },
                   {
                     "kind": "asset",
@@ -3154,7 +3122,7 @@
       "origin": {
         "id": "addy-agent-skills",
         "path": "skills/planning-and-task-breakdown",
-        "relationship": "exact-copy"
+        "relationship": "adapted"
       }
     },
     {
@@ -3191,10 +3159,6 @@
                   {
                     "kind": "asset",
                     "id": "performance-checklist"
-                  },
-                  {
-                    "kind": "asset",
-                    "id": "security-checklist"
                   },
                   {
                     "kind": "asset",
@@ -3237,7 +3201,7 @@
       "origin": {
         "id": "addy-agent-skills",
         "path": "skills/security-and-hardening",
-        "relationship": "exact-copy"
+        "relationship": "adapted"
       }
     },
     {
@@ -3257,27 +3221,11 @@
                 "references": [
                   {
                     "kind": "asset",
-                    "id": "accessibility-checklist"
-                  },
-                  {
-                    "kind": "asset",
-                    "id": "definition-of-done"
-                  },
-                  {
-                    "kind": "asset",
                     "id": "observability-checklist"
                   },
                   {
                     "kind": "asset",
                     "id": "orchestration-patterns"
-                  },
-                  {
-                    "kind": "asset",
-                    "id": "performance-checklist"
-                  },
-                  {
-                    "kind": "asset",
-                    "id": "security-checklist"
                   },
                   {
                     "kind": "asset",
@@ -3320,7 +3268,7 @@
       "origin": {
         "id": "addy-agent-skills",
         "path": "skills/shipping-and-launch",
-        "relationship": "exact-copy"
+        "relationship": "adapted"
       }
     },
     {
@@ -3527,10 +3475,6 @@
                   {
                     "kind": "asset",
                     "id": "security-checklist"
-                  },
-                  {
-                    "kind": "asset",
-                    "id": "testing-patterns"
                   }
                 ]
               }
@@ -3569,7 +3513,7 @@
       "origin": {
         "id": "addy-agent-skills",
         "path": "skills/test-driven-development",
-        "relationship": "exact-copy"
+        "relationship": "adapted"
       }
     },
     {
@@ -3590,10 +3534,6 @@
                   {
                     "kind": "asset",
                     "id": "accessibility-checklist"
-                  },
-                  {
-                    "kind": "asset",
-                    "id": "definition-of-done"
                   },
                   {
                     "kind": "asset",
@@ -3660,7 +3600,7 @@
       "origin": {
         "id": "addy-agent-skills",
         "path": "skills/using-agent-skills",
-        "relationship": "exact-copy"
+        "relationship": "adapted"
       }
     }
   ]

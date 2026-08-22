@@ -54,11 +54,11 @@ The frontmatter fields above are required. The section anatomy is a recommended 
 
 ### What Not to Do
 
-- Don't duplicate content between skills — reference other skills instead
+- Don't duplicate content between skills — reference other skills instead. The only exception is a Managed Pack portability copy under `skills/<name>/references/`; it must match its declared root `assets/` resource byte for byte, as enforced by `scripts/validate-reference-links.js`.
 - Don't add skills that are vague advice instead of actionable processes
-- Don't create supporting files unless content exceeds 100 lines
+- Don't create supporting files unless content exceeds 100 lines. Managed Pack portability copies may be shorter because inlining a shared checklist would make the distributed skill diverge from its reviewed asset.
 - Don't create an empty `scripts/` directory just to match another skill — add `scripts/` only when the skill includes runnable helpers
-- Don't put reference material inside skill directories — use `references/` instead
+- Don't put reference material inside skill directories — use the root `references/` directory, except for the validated Managed Pack portability copies above.
 
 ## Modifying Existing Skills
 
@@ -91,7 +91,7 @@ Expected output: `session-start JSON payload OK`. The script exits non-zero on a
 
 ### Reproducing the no-jq fallback
 
-The hook gracefully degrades to an `INFO`-priority payload when `jq` isn't on `PATH`. To exercise that branch locally, strip `jq`'s directory from `PATH` for the test invocation:
+The hook gracefully degrades to a diagnostic `additionalContext` payload when `jq` isn't on `PATH`. To exercise that branch locally, strip `jq`'s directory from `PATH` for the test invocation:
 
 ```bash
 JQ_DIR=$(dirname "$(command -v jq)")
@@ -101,7 +101,7 @@ PATH=$(echo "$PATH" | tr ':' '\n' | grep -v "^${JQ_DIR}$" | tr '\n' ':' | sed 's
 
 This works cleanly when `jq` lives in its own directory (e.g. `/opt/homebrew/bin` from Homebrew, `/usr/local/bin` from a manual install). If your `jq` shares a system bin with other tools the test depends on (such as `mktemp` in `/usr/bin`), the simpler approach is to install `jq` via a separate package manager so it has its own bin directory, then re-run.
 
-The hook's `command -v jq` check fails under the stripped `PATH`, the `INFO`-priority fallback runs, and the test asserts the `jq is required` guidance message instead of the normal payload.
+The hook's `command -v jq` check fails under the stripped `PATH`, the diagnostic `hookSpecificOutput`/`additionalContext` fallback runs, and the test asserts the `jq is required` guidance message instead of the normal payload.
 
 ## Reporting Issues
 

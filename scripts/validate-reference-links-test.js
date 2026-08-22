@@ -74,7 +74,7 @@ test('fails when a skill links the shared checklist as if it were colocated', ()
     result.stdout,
     /L1: references\/definition-of-done\.md — resolves to skills\/using-agent-skills\/references\/definition-of-done\.md/
   );
-  assert.match(result.stdout, /use `\.\.\/\.\.\/references\/<file>\.md`/);
+  assert.match(result.stdout, /use `\.\.\/\.\.\/references\/<file>\.md`, or add a validated local Managed Pack portability copy/);
 });
 
 test('checks markdown link syntax, not just backtick mentions', () => {
@@ -99,6 +99,39 @@ test('passes when a skill colocates its own references directory', () => {
 
   assert.equal(result.status, 0, result.stdout + result.stderr);
   assert.match(result.stdout, /1 skills checked — 0 error\(s\) — PASSED/);
+});
+
+test('fails when a managed skill reference drifts from its declared pack asset', () => {
+  const root = makeSandbox();
+  writeFile(
+    root,
+    'pack.json',
+    JSON.stringify({
+      resources: [
+        { kind: 'asset', id: 'definition-of-done', source: 'assets/definition-of-done.md' },
+      ],
+    })
+  );
+  writeFile(root, 'assets/definition-of-done.md', '# Canonical definition\n');
+  writeFile(
+    root,
+    'skills/using-agent-skills/references/definition-of-done.md',
+    '# Stale definition\n'
+  );
+  writeFile(
+    root,
+    'skills/using-agent-skills/SKILL.md',
+    'See `references/definition-of-done.md`.\n'
+  );
+
+  const result = run(root);
+
+  assert.equal(result.status, 1, result.stdout + result.stderr);
+  assert.match(result.stdout, /differs from managed Pack asset assets\/definition-of-done\.md/);
+  assert.match(
+    result.stdout,
+    /keep the local `references\/<file>\.md` link and synchronize its bytes from the declared `assets\/` resource/
+  );
 });
 
 test('fails when a link points at a checklist that no longer exists', () => {
