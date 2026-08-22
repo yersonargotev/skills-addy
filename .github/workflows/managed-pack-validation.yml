@@ -1,0 +1,15 @@
+name: Managed Pack validation
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+permissions: {}
+
+jobs:
+  validate:
+    uses: yersonargotev/packy/.github/workflows/managed-pack-validation.yml@f7f41cf188374cd48ea66e0f19167fdb4a126837
+    permissions:
+      contents: read
