@@ -18,11 +18,17 @@ function readManifestVersion(manifestPath) {
   return manifest.version ?? manifest.plugins?.[0]?.version;
 }
 
-const expectedVersion = execFileSync(
+const pluginTags = execFileSync(
   "git",
-  ["describe", "--tags", "--abbrev=0"],
+  ["tag", "--list", "--sort=-version:refname"],
   { encoding: "utf8" },
-).trim();
+).trim().split("\n").filter(Boolean);
+const expectedVersion = pluginTags.find((tag) => /^\d+\.\d+\.\d+$/.test(tag))
+  ?? readManifestVersion("plugin.json");
+
+if (!expectedVersion) {
+  throw new Error("plugin.json has no version and no stable plugin release tag exists");
+}
 
 for (const manifestPath of manifestPaths) {
   const version = readManifestVersion(manifestPath);

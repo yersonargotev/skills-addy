@@ -118,6 +118,16 @@ The tradeoff is portability: a whole-repo install (such as the Claude Code marke
 
 Current convention: material used by exactly one skill is a supporting file inside that skill's directory; material shared across skills goes in `references/`.
 
+The repository's Managed Pack distribution has one narrower constraint: every
+declared skill resource must be a complete, surface-independent tree. Affected
+skills therefore carry only the shared checklists they actually link under
+their own `references/` directory. These are portability copies, not a second
+authoring source: the canonical Pack resources live under root `assets/`, and
+`scripts/validate-reference-links.js` rejects any byte-level drift between a
+linked copy and its declared asset. This exception also applies to assets under
+100 lines because inlining them would change the skill independently of the
+reviewed shared resource.
+
 ## Context Efficiency
 
 Skills load on demand: only the skill name and description sit in context at startup. The full `SKILL.md` loads only when an agent decides the skill is relevant. To keep that load cheap:
