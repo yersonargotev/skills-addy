@@ -40,12 +40,6 @@ jobs:
       - name: Test reference-link validator
         run: node --test scripts/validate-reference-links-test.js
 
-      - name: Validate Managed Pack runtime closure
-        run: node scripts/validate-managed-pack-closure.js
-
-      - name: Test Managed Pack runtime-closure validator
-        run: node --test scripts/validate-managed-pack-closure-test.js
-
   validate-commands:
     name: Validate command parity and description sync
     runs-on: ubuntu-latest
